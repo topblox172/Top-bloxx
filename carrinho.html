@@ -37,14 +37,14 @@
             .botao-roxo {
                 background: linear-gradient(90deg, #9D4EDD 0%, #5A32C7 100%);
             }
-            /* NOVO: TAMANHO PADRÃO PARA TODOS OS QUADRADOS */
+            /* TAMANHO EXATO IGUAL O DO DRACO */
             .quadrado-produto {
-                max-height: 160px;
-                height: auto;
+                height: 200px; /* MESMA ALTURA DO OUTRO */
+                max-height: 200px;
             }
             .imagem-produto {
                 height: 100%;
-                max-height: 140px;
+                max-height: 180px;
                 object-fit: cover;
             }
         }
@@ -60,31 +60,31 @@
 </header>
 
 <main class="conteudo py-8">
-    <!-- AQUI DEIXEI O TAMANHO IGUAL PRA TODOS -->
-    <div id="produtoCarrinho" class="borda-roxa rounded-xl p-3 mb-6 flex gap-3 bg-card_bg quadrado-produto">
-        <img id="imagemProduto" src="" alt="Produto" class="w-[42%] rounded-lg imagem-produto">
+    <!-- TAMANHO IGUALZINHO O DO DRACO -->
+    <div id="produtoCarrinho" class="borda-roxa rounded-xl p-4 mb-6 flex gap-4 bg-card_bg quadrado-produto">
+        <img id="imagemProduto" src="" alt="Produto" class="w-[45%] rounded-lg imagem-produto">
         <div class="flex-1 flex flex-col justify-center">
-            <h2 id="nomeProduto" class="text-roxo text-lg font-bold mb-2 leading-tight"></h2>
-            <p id="precoUnitario" class="text-verde text-lg font-bold mb-3"></p>
-            <div class="flex items-center gap-3">
-                <button onclick="diminuirQtd()" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-xl font-bold">-</button>
-                <span id="quantidade" class="text-base font-bold">1</span>
-                <button onclick="aumentarQtd()" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-xl font-bold">+</button>
+            <h2 id="nomeProduto" class="text-roxo text-2xl font-bold mb-3 leading-tight"></h2>
+            <p id="precoUnitario" class="text-verde text-2xl font-bold mb-5"></p>
+            <div class="flex items-center gap-4">
+                <button onclick="diminuirQtd()" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-2xl font-bold">-</button>
+                <span id="quantidade" class="text-xl font-bold">1</span>
+                <button onclick="aumentarQtd()" class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-2xl font-bold">+</button>
             </div>
         </div>
     </div>
 
-    <div class="borda-roxa rounded-xl p-5 bg-card_bg">
-        <div class="mb-5">
-            <h3 class="text-roxo text-xl font-bold mb-2">Valor Total</h3>
-            <p id="valorTotal" class="text-verde text-3xl font-bold">R$ 0,00</p>
+    <div class="borda-roxa rounded-xl p-6 bg-card_bg">
+        <div class="mb-6">
+            <h3 class="text-roxo text-2xl font-bold mb-3">Valor Total</h3>
+            <p id="valorTotal" class="text-verde text-4xl font-bold">R$ 0,00</p>
         </div>
 
-        <div id="avisoEstoque" class="bg-vermelho/10 text-vermelho font-bold text-center py-3 rounded-lg mb-4 text-base hidden">
+        <div id="avisoEstoque" class="bg-vermelho/10 text-vermelho font-bold text-center py-4 rounded-lg mb-6 text-xl hidden">
             ❌ ESTE PRODUTO ESTÁ SEM ESTOQUE NO MOMENTO!
         </div>
 
-        <button onclick="verificarEstoque()" class="botao-roxo w-full text-white text-xl font-bold py-3 rounded-lg transition hover:opacity-90">
+        <button onclick="verificarEstoque()" class="botao-roxo w-full text-white text-2xl font-bold py-4 rounded-lg transition hover:opacity-90">
             FINALIZAR COMPRA
         </button>
     </div>
@@ -100,10 +100,10 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // ✅ AGORA CARREGA A IMAGEM DE QUALQUER PRODUTO SEM ERRO
-    // Se a imagem não carregar, coloquei um link alternativo pra não ficar vazia
+    // ✅ AGORA A IMAGEM VAI APARECER DE JEITO NENHUM VAI FICAR VAZIA
     document.getElementById('imagemProduto').onerror = function() {
-        this.src = 'https://i.imgur.com/7X6W5vB.jpeg'; // IMAGEM PADRÃO SE A SUA NÃO CARREGAR
+        // Se não encontrar a sua imagem, usa a que já funciona
+        this.src = 'https://i.imgur.com/7X6W5vB.jpeg';
     };
     document.getElementById('imagemProduto').src = produto.imagem;
 
